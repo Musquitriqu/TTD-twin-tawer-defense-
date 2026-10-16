@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
         {
             GameObject newEnemy = Instantiate(enemy);
             newEnemy.transform.position = this.transform.position;
-            newEnemy.GetComponent<Enemy movement>().target = target;
+            newEnemy.GetComponent<Enemymovement>().target = target;
             timeCounter = 0;
 
 
