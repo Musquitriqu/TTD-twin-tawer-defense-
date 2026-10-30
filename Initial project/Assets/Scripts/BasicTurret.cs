@@ -6,12 +6,14 @@ public class BasicTurret : MonoBehaviour
     public float range = 20;
     public float fireRate = 1f;
     private float counter = 0f;
+    public Transform head;
+    GameObject target = null;
     void Update()
     {
         counter -= Time.deltaTime;
         if (counter <= 0f)
         {
-            GameObject target = null;
+             target = null;
 
             float minDistance = range;
 
@@ -42,7 +44,11 @@ public class BasicTurret : MonoBehaviour
             }
         }
         
-        
+        if (target != null)
+        {
+            Quaternion rotation = Quaternion.LookRotation(target.transform.position - head.position);
+            head.rotation = Quaternion.Slerp(head.rotation, rotation, 20f + Time.deltaTime);
+        }
     }
 
 
